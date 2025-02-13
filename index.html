@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: #b30000;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .gift-box {
+            width: 100px;
+            height: 100px;
+            background-color: #b30000;
+            position: relative;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease-in-out;
+        }
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+        .gift-box::before {
+            content: '\1F381'; /* Gift box emoji */
+            font-size: 3em;
+            position: absolute;
+        }
+        .lid {
+            width: 100px;
+            height: 20px;
+            background-color: #990000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px 10px 0 0;
+            transition: transform 0.5s ease-in-out;
+        }
+        .message {
+            display: none;
+            font-size: 1.2em;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .image-gallery img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .video-container {
+            margin-top: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        function openGift() {
+            let giftBox = document.querySelector('.gift-box');
+            let lid = document.querySelector('.lid');
+            let message = document.querySelector('.message');
+            let gallery = document.querySelector('.image-gallery');
+            let video = document.querySelector('.video-container');
+            
+            lid.style.transform = 'translateY(-50px) rotate(-20deg)';
+            setTimeout(() => {
+                giftBox.style.transform = 'scale(0.8)';
+                message.style.display = 'block';
+                gallery.style.display = 'flex';
+                video.style.display = 'block';
+            }, 500);
+            setTimeout(() => {
+                giftBox.style.display = 'none';
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Valentine's Day, My Love! ❤️</h1>
+        <div class="gift-box" onclick="openGift()">
+            <div class="lid"></div>
+        </div>
+        <p class="message">You make my world brighter every day, Princess. I am so lucky to have you in my life. Here's a small gift to show how much I love you. 💕</p>
+        <div class="image-gallery" style="display: none;">
+            <img src="picture_1.jpg" alt="Picture 1">
+            <img src="picture_2.jpg" alt="Picture 2">
+            <img src="picture_3.jpg" alt="Picture 3">
+        </div>
+        <div class="video-container" style="display: none;">
+            <video width="320" height="240" controls>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</body>
+</html>
